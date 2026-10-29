@@ -36,7 +36,7 @@ h2{margin:6px 0 12px;font-size:22px}
 #lb{display:none;position:absolute;top:calc(84px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);background:#fff;color:var(--ink);border:4px solid var(--ac);border-radius:16px;padding:8px 16px;text-align:center;pointer-events:none}#lb.on{display:block}#lb small{display:block;font-size:17px}#lb img{width:130px;height:130px;object-fit:cover;border-radius:10px;display:block;margin:6px auto}#lb b{font-size:40px;direction:ltr;display:block}
 #pr{display:none}#vi{width:100%;max-height:52vh;object-fit:contain;background:#000;border-radius:12px}#vt{font-size:22px;white-space:pre-wrap;margin:10px 0}
 @media print{html,body{height:auto!important;overflow:visible!important;background:#fff;color:#000}body.pp>*:not(#pr){display:none!important}#pr{display:block}
-#pr{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pi{break-inside:avoid;border:1px solid #999;padding:6px;font-size:13px;text-align:center}.pi img{width:100%;max-height:7.5cm;object-fit:contain}.pi svg{width:70%;height:42px}.pi div{white-space:pre-wrap;text-align:right}.pi b{font-size:18px;display:block}}
+#pr{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pi{break-inside:avoid;border:1px solid #999;padding:6px;font-size:13px;text-align:center}.pi img{width:100%;max-height:7.5cm;object-fit:contain}.pi svg{width:70%;height:42px}.pi div{white-space:pre-wrap;text-align:right}.pi b{font-size:18px;display:block}.pi a{display:block;direction:ltr;font-size:10px;word-break:break-all;color:#000;text-decoration:none}}
 </style></head><body>
 <div id="cam"><video playsinline muted autoplay></video>
 <div id="bar"><button id="bl">☰ المواد <span id="bg"></span></button><span id="q"></span><button id="bs">⚙</button></div>
@@ -50,26 +50,35 @@ h2{margin:6px 0 12px;font-size:22px}
 <select id="fq"><option value="">كل التحويلات</option><option value="wait">بانتظار التحويل</option><option value="busy">جاري</option><option value="done">تم</option><option value="fail">مشكلة</option></select></div>
 <div id="lst"></div><button id="mr" style="width:100%;display:none">عرض المزيد</button></div>
 
-<div class="pn" id="pv"><div class="row"><button class="g" data-go="pl">← رجوع</button><button id="vn" class="g">◀ التالي</button><button id="vp" class="g">السابق ▶</button></div><h2 id="vc"></h2><img id="vi"><div id="vt"></div><small id="vm"></small><div class="row" style="margin-top:10px"><button id="vl2" class="g">▶ تشغيل الصوت</button><button id="ve">✏ تعديل</button></div></div>
+<div class="pn" id="pv"><div class="row"><button class="g" data-go="pl">← رجوع</button><button id="vn" class="g">◀ التالي</button><button id="vp" class="g">السابق ▶</button></div><h2 id="vc"></h2><img id="vi"><div id="vt"></div><small id="vm"></small><small id="vgl" dir="ltr" style="display:block;word-break:break-all;margin-top:8px;user-select:text"></small><div class="row" style="margin-top:10px"><button id="vl2" class="g">▶ تشغيل الصوت</button><button id="ve">✏ تعديل</button><button id="vcp" class="g">🔗 نسخ رابط الصورة</button></div></div>
 <div class="pn" id="pe"><button class="g" data-go="pl">← رجوع</button><h2 id="ec"></h2><img id="ei">
 <label>النص (تعديل)</label><textarea id="et"></textarea>
 <div class="row"><div><label>القسم</label><input id="es"></div><div><label>المكان</label><input id="ep"></div></div>
 <label>الحالة</label><select id="est"><option value="">غير محدد</option><option value="new">جديد</option><option value="old">قديم</option><option value="bad">تالف</option><option value="unk">غير معروفة</option></select>
 <button id="sv" style="width:100%;background:var(--ok)">حفظ</button>
-<div class="row" style="margin-top:10px"><button id="bd" class="r">تعليم تالف</button><button id="pa" class="g">▶ تشغيل الصوت</button><button id="rr" class="g">🎙 إعادة تسجيل</button><button id="rt" class="g">↻ إعادة التحويل</button><button id="dl" class="r">🗑 حذف</button></div></div>
+<div class="row" style="margin-top:10px"><button id="bd" class="r">تعليم تالف</button><button id="pa" class="g">▶ تشغيل الصوت</button><button id="rr" class="g">🎙 إعادة تسجيل</button><button id="rt" class="g">↻ إعادة التحويل</button><button id="ecp" class="g">🔗 نسخ رابط الصورة</button><button id="dl" class="r">🗑 حذف</button></div></div>
 
 <div class="pn" id="px"><button class="g" data-go="ps">← رجوع</button><h2>تصدير</h2>
 <label>القسم (فارغ = الكل)</label><input id="xs"><label>المكان يحتوي (فارغ = الكل)</label><input id="xp">
 <div class="row"><div><label>من تاريخ</label><input id="xf" type="date"></div><div><label>إلى تاريخ</label><input id="xt" type="date"></div></div>
 <div class="row"><button data-x="txt">نص فقط (CSV / Excel)</button><button data-x="img">صور فقط (ZIP)</button><button data-x="aud">صوت فقط (ZIP)</button><button data-x="it">صور + نص</button><button data-x="all">الكل</button><button data-x="pdf">PDF (صورة + النص + باركود)</button></div></div>
 
-<div class="pn" id="ps"><button class="g" data-go="">← الكاميرا</button><h2>الإعدادات <small>(إصدار 4)</small></h2>
+<div class="pn" id="ps"><button class="g" data-go="">← الكاميرا</button><h2>الإعدادات <small>(إصدار 5)</small></h2>
 <label>خدمة التحويل</label><select id="prov"><option value="el">ElevenLabs (Scribe)</option><option value="oa">مخصص (متوافق مع OpenAI)</option></select>
 <label>مفتاح API (يبقى على الهاتف فقط)</label><input id="key" type="password" autocomplete="off">
 <label>اسم النموذج</label><input id="model"><label>رابط الخدمة (للمخصص فقط)</label><input id="url" dir="ltr">
 <button id="tst" style="width:100%">اختبار الاتصال</button><p id="tr"></p>
 <label>كلمات الأقسام (قسم: كلمة، كلمة)</label><textarea id="k1" rows="5"></textarea>
 <label>كلمات تالف</label><input id="k2"><label>كلمات قديم</label><input id="k3"><label>كلمات جديد</label><input id="k4"><label>عبارات "ما أعرفها"</label><input id="k5">
+<h2 style="margin-top:18px">☁ GitHub (رفع الصور)</h2>
+<label>اسم حسابك (Owner)</label><input id="gho" dir="ltr" autocomplete="off" autocapitalize="off">
+<label>اسم المستودع (Repo)</label><input id="ghr" dir="ltr" autocomplete="off" autocapitalize="off">
+<label>الفرع (Branch)</label><input id="ghb" dir="ltr" autocomplete="off" autocapitalize="off">
+<label>المجلد داخل المستودع (فارغ = الرئيسي)</label><input id="ghd" dir="ltr" autocomplete="off" autocapitalize="off">
+<label>Token (يبقى على الهاتف فقط)</label><input id="ght" type="password" dir="ltr" autocomplete="off">
+<label>نوع الرابط</label><select id="ghl"><option value="raw">مباشر للصورة (raw)</option><option value="blob">صفحة الصورة على GitHub</option></select>
+<label>الرفع التلقائي بعد كل تصوير</label><select id="gha"><option value="on">شغّال</option><option value="off">مطفأ (يدوي)</option></select>
+<div class="row"><button id="ghtst">اختبار GitHub</button><button id="ghall" class="g">رفع كل الصور غير المرفوعة</button></div><p id="ghtr"></p>
 <div class="row"><button data-go="px">تصدير…</button><button id="be" class="g">نسخة احتياطية كاملة</button><button id="bz" class="g">استيراد نسخة</button></div>
 <input id="bi" type="file" accept=".zip" hidden></div>
 <div id="pr"></div>
@@ -94,7 +103,7 @@ function lastBox(c,img){URL.revokeObjectURL(lu);lu=img?URL.createObjectURL(img):
 function newCode(){let c,k=0;do{c='abo'+(++k>200?10000+Math.floor(Math.random()*90000):1000+Math.floor(Math.random()*9000))}while(codes.has(c));codes.add(c);return c}
 function go(id){document.querySelectorAll('.pn').forEach(p=>p.classList.toggle('on',p.id==id));if(id=='pl')list();if(id=='ps')fillSet()}
 async function stat(){const a=await all(),w=a.filter(i=>i.q=='wait'||i.q=='busy').length,f=a.filter(i=>i.q=='fail').length;
-$('#q').textContent=(w?'⏳ '+w+' ':'')+(f?'⚠ '+f+' ':'')+(w&&!S('key')?'(لا يوجد مفتاح)':'');$('#bg').textContent=a.length||''}
+const g=ghOn()?a.filter(i=>i.img&&!i.gh).length:0;$('#q').textContent=(g?'☁ '+g+' ':'')+(w?'⏳ '+w+' ':'')+(f?'⚠ '+f+' ':'')+(w&&!S('key')?'(لا يوجد مفتاح)':'');$('#bg').textContent=a.length||''}
 const ui=on=>{$('#rec').className=on?'on':'';$('#hint').style.display=on?'none':''};
 // ---------- الكاميرا ----------
 async function cam(){try{[stream,astream].forEach(x=>x?.getTracks().forEach(t=>{t.onended=null;t.stop()}));
@@ -128,7 +137,7 @@ async function fin(imgP,code,rd,b){try{let img;
 if(rd){const i=await get(code);Object.assign(i,{aud:b,at:b.type,q:'wait',tries:0,err:''});await put(i);img=i.img;redo=null;$('#rd').className=''}
 else{img=await imgP;const n=++N,tiny=b.size<1500;W('n',N);
 await put({code,n,ts:Date.now(),img,aud:b,at:b.type,text:'',fixed:'',sec:'',place:'',st:tiny?'unk':'',q:tiny?'done':'wait',tries:0,err:''})}
-lastBox(code,img);toast('✓ '+code+' انحفظت',1);stat();kick()}catch(e){toast('فشل حفظ '+code)}}
+lastBox(code,img);toast('✓ '+code+' انحفظت',1);stat();kick();ghKick()}catch(e){toast('فشل حفظ '+code)}}
 // ---------- التحويل إلى نص ----------
 function parse(t){const x=nz(t),has=l=>l.split(/[,،\n]/).some(w=>(w=nz(w.trim()))&&x.includes(w));let sec='';
 for(const ln of S('kw_sec',KW.sec).split('\n')){const[n,w]=ln.split(':');if(w&&has(w)){sec=n.trim();break}}
@@ -157,13 +166,13 @@ const a=(await all()).sort((x,y)=>y.n-x.n),q=nz($('#sq').value.trim()),cur=$('#f
 $('#fs').innerHTML='<option value="">كل الأقسام</option><option value="-">بدون قسم</option>'+[...new Set(a.map(i=>i.sec).filter(Boolean))].map(s=>`<option>${esc(s)}</option>`).join('');$('#fs').value=cur;const fs=$('#fs').value;
 const r=a.filter(i=>(!fs||(fs=='-'?!i.sec:i.sec==fs))&&(!ft||i.st==ft)&&(!fq||i.q==fq)&&(!q||nz([i.code,i.text,i.fixed,i.place,i.sec].join(' ')).includes(q)));
 $('#lst').innerHTML=r.slice(0,shown).map(i=>{const u=i.img?URL.createObjectURL(i.img):'';urls.push(u);
-return`<div class="it"><img src="${u}" data-v="${i.code}"><div><b>${i.code}</b> <span class="c ${i.st}">${SL[i.st]}</span> <span class="c q${i.q}">${QL[i.q]}</span><p>${esc(i.fixed||i.text)||'—'}</p><small>${esc([i.sec,i.place].filter(Boolean).join(' • '))}</small></div><button data-p="${i.code}">▶</button><button data-e="${i.code}">✏</button></div>`}).join('')||'<p>لا توجد مواد</p>';
+return`<div class="it"><img src="${u}" data-v="${i.code}"><div><b>${i.code}</b> <span class="c ${i.st}">${SL[i.st]}</span> <span class="c q${i.q}">${QL[i.q]}</span>${i.gh?'<span class="c">☁</span>':''}<p>${esc(i.fixed||i.text)||'—'}</p><small>${esc([i.sec,i.place].filter(Boolean).join(' • '))}</small></div><button data-p="${i.code}">▶</button><button data-e="${i.code}">✏</button>${i.gh?`<button class="g" data-l="${i.code}">🔗</button>`:''}</div>`}).join('')||'<p>لا توجد مواد</p>';
 vl=r.map(i=>i.code);$('#mr').style.display=r.length>shown?'':'none';$('#cnt').textContent=r.length+' مادة'}
 ['#sq','#fs','#ft','#fq'].forEach(s=>$(s).oninput=()=>list());$('#mr').onclick=()=>{shown+=50;list(1)};
-$('#lst').onclick=e=>{const b=e.target.closest('[data-p],[data-e],[data-v]');if(!b)return;b.dataset.p?play(b.dataset.p):b.dataset.v?view(b.dataset.v):edit(b.dataset.e)};
+$('#lst').onclick=e=>{const b=e.target.closest('[data-p],[data-e],[data-v],[data-l]');if(!b)return;b.dataset.l?copyLink(b.dataset.l):b.dataset.p?play(b.dataset.p):b.dataset.v?view(b.dataset.v):edit(b.dataset.e)};
 async function play(c){const i=await get(c);aud?.pause();aud=new Audio(URL.createObjectURL(i.aud));aud.play().catch(()=>toast('تعذر تشغيل الصوت'))}
 let vu;async function view(c){const i=await get(c);if(!i)return;vc=c;URL.revokeObjectURL(vu);vu=i.img?URL.createObjectURL(i.img):'';$('#vi').src=vu;
-$('#vc').textContent=c+' • '+SL[i.st]+' • '+QL[i.q];$('#vt').textContent=i.fixed||i.text||'(لا يوجد نص بعد)';$('#vm').textContent=[i.sec,i.place,new Date(i.ts).toLocaleString('ar-IQ')].filter(Boolean).join(' • ');go('pv')}
+$('#vc').textContent=c+' • '+SL[i.st]+' • '+QL[i.q];$('#vt').textContent=i.fixed||i.text||'(لا يوجد نص بعد)';$('#vm').textContent=[i.sec,i.place,new Date(i.ts).toLocaleString('ar-IQ')].filter(Boolean).join(' • ');$('#vgl').textContent=ghLink(i)||(ghOn()?'☁ لم تُرفع بعد':'');go('pv')}
 const vstep=d=>{const k=vl.indexOf(vc)+d;vl[k]&&view(vl[k])};$('#vn').onclick=()=>vstep(1);$('#vp').onclick=()=>vstep(-1);$('#vl2').onclick=()=>play(vc);$('#ve').onclick=()=>edit(vc);
 async function edit(c){const i=await get(c);ec=c;$('#ei').src=i.img?URL.createObjectURL(i.img):'';$('#ec').textContent=c+' • '+QL[i.q]+(i.err&&i.q!='done'?' • '+i.err:'');
 $('#et').value=i.fixed||i.text;$('#es').value=i.sec;$('#ep').value=i.place;$('#est').value=i.st;go('pe')}
@@ -173,16 +182,53 @@ $('#dl').onclick=async()=>{if(confirm('حذف '+ec+' نهائياً؟')){await d
 $('#rr').onclick=()=>{redo=ec;go('');$('#lb').className='';$('#rd').textContent='🎙 المس لتسجيل صوت جديد لـ '+ec+' (المس هنا للإلغاء)';$('#rd').className='on'};
 $('#rt').onclick=async()=>{const i=await get(ec);Object.assign(i,{q:'wait',tries:0,err:''});await put(i);go('pl');stat();kick()};
 // ---------- الإعدادات ----------
-const F={prov:'prov',key:'key',model:'model',url:'url',k1:'kw_sec',k2:'kw_bad',k3:'kw_old',k4:'kw_nw',k5:'kw_unk'};
-const dflt=k=>k.startsWith('kw_')?KW[k.slice(3)]:k=='model'?'scribe_v1':k=='prov'?'el':'';
+const F={prov:'prov',key:'key',model:'model',url:'url',k1:'kw_sec',k2:'kw_bad',k3:'kw_old',k4:'kw_nw',k5:'kw_unk',gho:'gh_o',ghr:'gh_r',ghb:'gh_b',ghd:'gh_d',ght:'gh_t',ghl:'gh_l',gha:'gh_a'};
+const dflt=k=>k.startsWith('kw_')?KW[k.slice(3)]:k=='model'?'scribe_v1':k=='prov'?'el':({gh_b:'main',gh_d:'images',gh_l:'raw',gh_a:'on'})[k]||'';
 function fillSet(){for(const[id,k]of Object.entries(F))$('#'+id).value=S(k,dflt(k))}
 for(const[id,k]of Object.entries(F))$('#'+id).oninput=e=>{W(k,e.target.value);k=='key'&&kick()};
 function wav(){const n=8000,b=new DataView(new ArrayBuffer(44+n*2)),w=(o,s)=>[...s].forEach((c,i)=>b.setUint8(o+i,c.charCodeAt()));
 w(0,'RIFF');b.setUint32(4,36+n*2,1);w(8,'WAVEfmt ');b.setUint32(16,16,1);b.setUint16(20,1,1);b.setUint16(22,1,1);b.setUint32(24,8000,1);b.setUint32(28,16000,1);b.setUint16(32,2,1);b.setUint16(34,16,1);w(36,'data');b.setUint32(40,n*2,1);return new Blob([b],{type:'audio/wav'})}
 $('#tst').onclick=async()=>{$('#tr').textContent='جاري الاختبار…';try{await stt(wav());$('#tr').textContent='✓ الاتصال شغال'}catch(e){$('#tr').textContent='✗ '+e.message}};
+// ---------- GitHub ----------
+const GH=()=>({o:S('gh_o').trim(),r:S('gh_r').trim(),b:S('gh_b','main').trim()||'main',d:S('gh_d','images').trim().replace(/^\/+|\/+$/g,''),t:S('gh_t').trim()});
+const ghOn=()=>{const g=GH();return!!(g.o&&g.r&&g.t)};
+const ghEnc=p=>p.split('/').map(encodeURIComponent).join('/');
+const ghLink=i=>{const g=i&&i.gh;if(!g)return'';const p=ghEnc(g.p);return S('gh_l','raw')=='raw'?`https://raw.githubusercontent.com/${g.o}/${g.r}/${g.b}/${p}`:`https://github.com/${g.o}/${g.r}/blob/${g.b}/${p}`};
+const ghH=t=>({Authorization:'Bearer '+t,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'});
+async function ghUp(i){const g=GH(),p=(g.d?g.d+'/':'')+i.code+'.jpg',u=`https://api.github.com/repos/${g.o}/${g.r}/contents/${ghEnc(p)}`;
+const b64=await new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result.split(',')[1]);f.readAsDataURL(i.img)});
+const body={message:'add '+i.code,content:b64,branch:g.b};
+let r=await fetch(u,{method:'PUT',headers:ghH(g.t),body:JSON.stringify(body)});
+if(r.status==422||r.status==409){const e=await fetch(u+'?ref='+encodeURIComponent(g.b),{headers:ghH(g.t)});
+if(e.ok){body.sha=(await e.json()).sha;body.message='update '+i.code;r=await fetch(u,{method:'PUT',headers:ghH(g.t),body:JSON.stringify(body)})}}
+if(!r.ok){const j=await r.json().catch(()=>({})),e=new Error(r.status+' '+String(j.message||'').slice(0,140));e.st=r.status;throw e}
+return{o:g.o,r:g.r,b:g.b,p}}
+async function ghOne(c){const i=await get(c);if(!i||!i.img)return null;const ref=await ghUp(i),k=await get(c);if(!k)return null;
+k.gh=ref;k.ghe=0;k.gherr='';await put(k);stat();return k}
+let ghbz=false;
+async function ghKick(force){if(ghbz||!ghOn()||(!force&&S('gh_a','on')!='on'))return;ghbz=true;let ok=0,sh=0;
+try{for(;;){if(!navigator.onLine)break;
+const it=(await all()).filter(i=>i.img&&!i.gh&&(i.ghe||0)<3).sort((a,b)=>a.n-b.n)[0];if(!it)break;
+try{if(await ghOne(it.code))ok++}
+catch(e){if(!e.st)break;const c=await get(it.code);if(c){c.ghe=(c.ghe||0)+1;c.gherr=String(e.message).slice(0,160);await put(c)}
+if(!sh){sh=1;toast('GitHub: '+e.message)}if([401,403,404].includes(e.st))break}}}
+finally{ghbz=false;stat();ok&&toast('☁ انرفعت '+ok+' صورة إلى GitHub',1)}}
+addEventListener('online',()=>ghKick());
+async function copyLink(c){let i=await get(c);if(!i)return;
+if(!i.gh){if(!ghOn())return toast('أدخل إعدادات GitHub من ⚙ أولاً');if(!navigator.onLine)return toast('لا يوجد انترنت للرفع');
+toast('جاري رفع الصورة…',1);try{i=await ghOne(c)}catch(e){return toast('فشل الرفع: '+e.message)}if(!i)return}
+const u=ghLink(i);try{await navigator.clipboard.writeText(u)}catch(e){const a=document.createElement('textarea');a.value=u;document.body.append(a);a.select();document.execCommand('copy');a.remove()}
+toast('✓ اننسخ رابط '+c,1);if($('#pv').classList.contains('on'))$('#vgl').textContent=u}
+$('#vcp').onclick=()=>copyLink(vc);$('#ecp').onclick=()=>copyLink(ec);
+$('#ghall').onclick=async()=>{if(!ghOn())return toast('عبّي الحساب والمستودع والـ Token أولاً');for(const i of await all())if(i.ghe){i.ghe=0;await put(i)}toast('جاري الرفع…',1);await ghKick(1)};
+$('#ghtst').onclick=async()=>{const g=GH(),o=$('#ghtr');if(!ghOn()){o.textContent='✗ عبّي الحساب والمستودع والـ Token';return}o.textContent='جاري الاختبار…';
+try{const r=await fetch(`https://api.github.com/repos/${g.o}/${g.r}`,{headers:ghH(g.t)}),j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(r.status+' '+(j.message||''));
+const b=await fetch(`https://api.github.com/repos/${g.o}/${g.r}/branches/${encodeURIComponent(g.b)}`,{headers:ghH(g.t)});
+o.textContent=j.permissions&&!j.permissions.push?'✗ التوكن ما عنده صلاحية كتابة (Contents: Read and write)':!b.ok?'✗ الفرع "'+g.b+'" غير موجود (الافتراضي: '+j.default_branch+'). إذا المستودع فاضي أضف له ملف README من GitHub أولاً':'✓ شغال — المستودع '+(j.private?'خاص':'عام')+(j.private&&S('gh_l','raw')=='raw'?' — ملاحظة: رابط raw ما يفتح لغيرك بمستودع خاص':'')}
+catch(e){o.textContent='✗ '+e.message}};
 // ---------- التصدير ----------
 const fn=(i,k)=>i.code+(k=='i'?'.jpg':'.'+ex(i.at||''));
-const csv=l=>'\ufeff'+['الكود,القسم,المكان,الحالة,الوقت,النص كما حُوّل,النص المصحح,اسم ملف الصورة,اسم ملف الصوت',...l.map(i=>[i.code,i.sec,i.place,SL[i.st],new Date(i.ts).toLocaleString('en-GB'),i.text,i.fixed,fn(i,'i'),fn(i,'a')].map(c=>'"'+String(c??'').replace(/"/g,'""')+'"').join(','))].join('\r\n');
+const csv=l=>'\ufeff'+['الكود,القسم,المكان,الحالة,الوقت,النص كما حُوّل,النص المصحح,اسم ملف الصورة,رابط الصورة (GitHub),اسم ملف الصوت',...l.map(i=>[i.code,i.sec,i.place,SL[i.st],new Date(i.ts).toLocaleString('en-GB'),i.text,i.fixed,fn(i,'i'),ghLink(i),fn(i,'a')].map(c=>'"'+String(c??'').replace(/"/g,'""')+'"').join(','))].join('\r\n');
 const crcT=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
 const crc=u=>{let c=-1;for(let i=0;i<u.length;i++)c=crcT[(c^u[i])&255]^(c>>>8);return(c^-1)>>>0};
 async function zip(files){const parts=[],cd=[],enc=new TextEncoder();let off=0,cs=0;
@@ -207,7 +253,7 @@ for(const c of v)[...BP[c]].forEach((w,k)=>{if(k%2==0)r+=`<rect x="${x}" width="
 return`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${x+10} 50" preserveAspectRatio="none"><rect width="${x+10}" height="50" fill="#fff"/>${r}</svg>`}
 async function pdf(l){const p=$('#pr'),ims=[];p.innerHTML='';
 for(const i of l){const d=document.createElement('div'),im=new Image(),t=document.createElement('div');d.className='pi';im.src=URL.createObjectURL(i.img);ims.push(im);
-t.textContent=`${[i.sec,i.place,SL[i.st]].filter(Boolean).join(' | ')}\n${i.fixed||i.text}`;d.append(im);d.insertAdjacentHTML('beforeend',bc(i.code)+`<b>${i.code}</b>`);d.append(t);p.append(d)}
+t.textContent=`${[i.sec,i.place,SL[i.st]].filter(Boolean).join(' | ')}\n${i.fixed||i.text}`;d.append(im);d.insertAdjacentHTML('beforeend',bc(i.code)+`<b>${i.code}</b>`);d.append(t);const gl=ghLink(i);if(gl){const a=document.createElement('a');a.href=gl;a.textContent=gl;d.append(a)}p.append(d)}
 await Promise.all(ims.map(m=>m.decode().catch(()=>0)));document.body.classList.add('pp');
 addEventListener('afterprint',()=>{document.body.classList.remove('pp');p.innerHTML=''},{once:true});print()}
 document.querySelectorAll('[data-x]').forEach(b=>b.onclick=async()=>{const k=b.dataset.x,l=await sel();if(!l.length)return toast('لا توجد مواد بهذا الاختيار');
@@ -230,5 +276,5 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b
 (async()=>{await open();const a=await all();N=Math.max(+S('n',0),0,...a.map(i=>i.n));a.forEach(i=>codes.add(i.code));navigator.storage?.persist?.();
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 for(const i of a)if(i.q=='busy'){i.q='wait';await put(i)}
-await cam();stat();kick()})();
+await cam();stat();kick();ghKick()})();
 </script></body></html>
